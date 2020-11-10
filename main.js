@@ -2,14 +2,20 @@ let button = document.getElementById('button')
 button.addEventListener('click', start)
 
 async function start() {
-    let response = await fetch('https://icanhazdadjoke.com', {
-        headers: {
-            Accept: 'application/json'
-        }
-    });
-    let data = await response.json()
-        // console.log(data);
-    displayJokes(data.joke)
+    try {
+        let response = await fetch('https://icanhazdadjoke.com', {
+            headers: {
+                Accept: 'application/json'
+            }
+        });
+        let data = await response.json()
+        console.log(data);
+        displayJokes(data.joke)
+    } catch {
+        console.log('There was an error loading this page');
+    }
+
+
 }
 // start()
 
